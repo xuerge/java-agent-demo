@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>java-agent</artifactId>
+        <groupId>com.eben</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>demo</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>29.0-jre</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>agent-demo</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <finalName>demo</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.eben.demo.MathGame</mainClass>
+                        </manifest>
+                    </archive>
+                    <outputDirectory>
+                        ${project.parent.basedir}/bin
+                    </outputDirectory>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                &lt;!&ndash; NOTE: We don't need a groupId specification because the group is-->
+<!--                     org.apache.maven.plugins ...which is assumed by default.-->
+<!--                 &ndash;&gt;-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-assembly-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <configuration>-->
+<!--&lt;!&ndash;                    <descriptorRefs>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <descriptorRef>bin</descriptorRef>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </descriptorRefs>&ndash;&gt;-->
+<!--                    <descriptors>-->
+<!--                        <descriptor>src/assembly/src.xml</descriptor>-->
+<!--                    </descriptors>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <mainClass>com.eben.demo.MathGame</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>make-assembly</id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
+<!--                        <phase>package</phase> &lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
+<!--                        <goals>-->
+<!--                            <goal>single</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
